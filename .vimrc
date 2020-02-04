@@ -1,10 +1,11 @@
 " junegunn/vim-plug, install new plugins with :PlugInstall
-call plug#begin()
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
+call plug#begin()
 " Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'scrooloose/nerdtree' " file explorere
 Plug 'flazz/vim-colorschemes'
@@ -12,6 +13,7 @@ Plug 'vim-airline/vim-airline' " status bar
 Plug 'vim-airline/vim-airline-themes'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'tpope/vim-sleuth' " infer whitespace style
+Plug 'pangloss/vim-javascript'
 call plug#end()
 let g:pymode_python = 'python3'
 
@@ -47,6 +49,9 @@ autocmd BufRead * normal zR
 " Renaming for tmux
 autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . expand("%"))
 autocmd VimLeave * call system("tmux rename-window bash")
+
+" ctags
+set tags+=tags;/ " search parent directories for tag file
 
 """"" PLUGINS
 " NERDTree
