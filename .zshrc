@@ -2,12 +2,12 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/ant8020/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
@@ -26,8 +26,14 @@ ZSH_THEME="agnoster"
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -64,13 +70,11 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  zsh-autosuggestions
-  history-substring-search
-  zsh-syntax-highlighting
+  # TODO broken
+  # zsh-autosuggestions
+  # history-substring-search
+  # zsh-syntax-highlighting
 )
-
-bindkey "^[[A" history-substring-search-up
-bindkey "^[[B" history-substring-search-down
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,9 +95,6 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -103,11 +104,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+: '
 # This speeds up pasting w/ autosuggest
 # https://github.com/zsh-users/zsh-autosuggestions/issues/238
 pasteinit() {
   OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
-  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+  zle -N self-insert url-quote-magic # I wonder if youd need `.url-quote-magic`?
 }
 
 pastefinish() {
@@ -115,21 +117,37 @@ pastefinish() {
 }
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
+'
 
 source ~/.zsh/zsh-dircolors-solarized/zsh-dircolors-solarized.zsh
-export PATH=$PATH:/home/ant8020/depot_tools
+export PATH=$PATH:$HOME/depot_tools
+
+conda_home=$HOME
+
+if [[ "$(hostname -f)" == *'cs.utexas.edu'* ]]; then
+  is_utcs=true
+  conda_home='/scratch/cluster/antony'
+  export PATH=$HOME/exuberant-ctags/usr/bin:$PATH
+  export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/f1tenth_course
+  export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/cs378_self_driving
+
+  if [ -e /opt/ros/melodic/setup.zsh ]; then
+          source /opt/ros/melodic/setup.zsh
+  fi
+fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/ant8020/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('$conda_home/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/ant8020/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/ant8020/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "$conda_home/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "$conda_home/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/ant8020/anaconda3/bin:$PATH"
+        export PATH="$conda_home/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
