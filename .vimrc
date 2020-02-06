@@ -57,6 +57,7 @@ set tags+=tags;/ " search parent directories for tag file
 " NERDTree
 autocmd VimEnter * NERDTree " open NERDTree on vim open
 autocmd VimEnter * wincmd p " move cursor to main window
+autocmd BufWinEnter * NERDTreeMirror " open NERDTree in each tab
 let NERDTreeShowHidden=1
 
 " vim-sleuth
