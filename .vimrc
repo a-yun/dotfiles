@@ -12,6 +12,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline' " status bar 
 Plug 'vim-airline/vim-airline-themes'
 Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'tpope/vim-sleuth' " infer whitespace style
 Plug 'pangloss/vim-javascript'
 call plug#end()
@@ -57,6 +58,7 @@ set tags+=tags;/ " search parent directories for tag file
 " NERDTree
 autocmd VimEnter * NERDTree " open NERDTree on vim open
 autocmd VimEnter * wincmd p " move cursor to main window
+autocmd BufWinEnter * NERDTreeMirror " open NERDTree in each tab
 let NERDTreeShowHidden=1
 
 " vim-sleuth
