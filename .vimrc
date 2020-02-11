@@ -12,6 +12,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline' " status bar 
 Plug 'vim-airline/vim-airline-themes'
 Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'tpope/vim-sleuth' " infer whitespace style
 Plug 'pangloss/vim-javascript'
 call plug#end()
