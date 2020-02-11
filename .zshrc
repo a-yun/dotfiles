@@ -128,12 +128,12 @@ if [[ "$(hostname -f)" == *'cs.utexas.edu'* ]]; then
   is_utcs=true
   conda_home='/scratch/cluster/antony'
   export PATH=$HOME/exuberant-ctags/usr/bin:$PATH
-  export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/f1tenth_course
-  export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/cs378_self_driving
 
   if [ -e /opt/ros/melodic/setup.zsh ]; then
           source /opt/ros/melodic/setup.zsh
   fi
+  export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/f1tenth_course
+  export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/cs378_self_driving
 fi
 
 # >>> conda initialize >>>
