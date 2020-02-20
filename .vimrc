@@ -38,6 +38,7 @@ set ignorecase
 set list " display invisible characters
 set listchars=tab:>-
 set laststatus=2 " turn statusbar on
+set cursorline " highlight current line
 
 " Folding and wrapping
 " set foldlevel=99 " ???
