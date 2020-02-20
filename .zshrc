@@ -134,6 +134,13 @@ if [[ "$(hostname -f)" == *'cs.utexas.edu'* ]]; then
   fi
   export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/f1tenth_course
   export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/cs378_self_driving
+
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/u/antony/.mujoco/mujoco200_linux/bin
+  export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so
+  export MUJOCO_PY_MJKEY_PATH=~/.mujoco/mjkey.txt
+  export MUJOCO_PY_MUJOCO_PATH=~/.mujoco/mujoco200_linux
+  export MUJOCO_PATH=~/.mujoco/mujoco200_linux
+
 fi
 
 # >>> conda initialize >>>
