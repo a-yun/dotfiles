@@ -15,6 +15,7 @@ Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'tpope/vim-sleuth' " infer whitespace style
 Plug 'pangloss/vim-javascript'
+Plug 'tmhedberg/SimpylFold' " Python folding
 call plug#end()
 let g:pymode_python = 'python3'
 
@@ -75,6 +76,10 @@ if get(g:, '_has_set_default_indent_settings', 0) == 0
   let g:_has_set_default_indent_settings = 1
 endif
 
+" vim fugitive
+set diffopt+=vertical " vertical diff splits
+
 """"" MISC
 " Remove all trailing whitespace with F5
+set shell=/bin/zsh
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
