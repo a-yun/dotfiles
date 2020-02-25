@@ -122,6 +122,8 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 source ~/.zsh/zsh-dircolors-solarized/zsh-dircolors-solarized.zsh
 export PATH=$PATH:$HOME/depot_tools
 
+setxkbmap -option && setxkbmap -option ctrl:nocaps && killall xcape 2> /dev/null ; xcape -e 'Control_L=Escape'
+
 conda_home=$HOME
 
 if [[ "$(hostname -f)" == *'cs.utexas.edu'* ]]; then
