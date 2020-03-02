@@ -160,3 +160,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+PROMPT='%{$fg[yellow]%}[%D{%m/%d} %*] '$PROMPT
