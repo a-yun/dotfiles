@@ -32,6 +32,7 @@ set shiftwidth=2
 set expandtab
 set autoindent
 set smartindent
+set virtualedit=all " position cursor after EOL
 
 " Characters and display
 set number
@@ -41,6 +42,8 @@ set list " display invisible characters
 set listchars=tab:>-
 set laststatus=2 " turn statusbar on
 set cursorline " highlight current line
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
 
 " Folding and wrapping
 " set foldlevel=99 " ???
