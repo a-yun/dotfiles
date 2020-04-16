@@ -16,6 +16,7 @@ Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'tpope/vim-sleuth' " infer whitespace style
 Plug 'pangloss/vim-javascript'
 Plug 'tmhedberg/SimpylFold' " Python folding
+Plug 'vim-pandoc/vim-pandoc' " markdown rendering with pandoc
 call plug#end()
 let g:pymode_python = 'python3'
 
